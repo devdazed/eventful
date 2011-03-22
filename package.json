@@ -1,0 +1,10 @@
+{
+    "name": "node-event-log"
+  , "version": "0.0.1"
+  , "description": "EventEmitter based logging for node.js"
+  , "keywords": []
+  , "author": "Russell Bradberry <rbradberry@gmail.com>"
+  , "dependencies": {}
+  , "main": "index"
+  , "engines": { "node": "0.4.x" }
+}
