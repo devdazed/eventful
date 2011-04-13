@@ -5,4 +5,5 @@ test:
 
 test-cov:
 	@$(TEST) -I lib/ --cov
+
 .PHONY: test

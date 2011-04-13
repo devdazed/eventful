@@ -1,13 +1,14 @@
-
 /**
  * Module dependencies.
  */
+var EventLogger = require('node-event-log'),
+    EventEmitter = require('events').EventEmitter,
+    logger = new EventLogger(),
+    emitter = new EventEmitter(),
+    test = module.exports,
+    should = require('should');
 
-var node-event-log = require('node-event-log')
-  , should = require('should');
-
-module.exports = {
-  'test .version': function(){
-    node-event-log.version.should.match(/^\d+\.\d+\.\d+$/);
-  }
+test['.version'] = function(){
+  logger.version.should.match(/^\d+\.\d+\.\d+$/);  
 };
+
