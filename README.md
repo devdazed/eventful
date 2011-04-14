@@ -23,6 +23,7 @@
     [format]: is the format of the text to be logged see format
     [only]: an array of event names that will only be logged
     [exclude]: an array of event names to prevent form being logged
+    [to]: if a function is supplied, it will be called back, if a string is supplied it will opend and append to that file
     [customFormatter]: a callback function for making your own formatter
     
 Eventful takes the event and inspects all of the arguments to log the data, if you would like to override this behavior you can supply a custom formatter as such:
