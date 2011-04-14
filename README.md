@@ -15,6 +15,7 @@
         only:[]
         exclude:[],
         to:function(text){ console.log(text); }
+        customFormatter:function(date, event, arguments){ }
       }
     }
 
@@ -22,7 +23,21 @@
     [format]: is the format of the text to be logged see format
     [only]: an array of event names that will only be logged
     [exclude]: an array of event names to prevent form being logged
-  
+    [customFormatter]: a callback function for making your own formatter
+    
+Eventful takes the event and inspects all of the arguments to log the data, if you would like to override this behavior you can supply a custom formatter as such:
+
+    { 
+      level: {
+        customFormatter:function(date, event, arguments){
+          return date.getTime() + " " + event + " " + arguments[0];
+        }
+      }
+    }
+
+The parameters for the callback are "the date of the event", "the name of the event", "an array of arguments associated with the event"
+Obviously,the above example is only useful if you know what argument 0 will be all the time, but you get the idea
+
 ## usage
 
     var Eventful = require('eventful'),
@@ -37,12 +52,33 @@
     logger.attach(server);
     server.listen(8124, "127.0.0.1");
     
+## formatting
+
+Valid Formatting Options are:
+   %XX   - The unix epoch
+   %YYYY - Four digit year
+   %MM   - Two digit month (eg. 01, 02, 10, 11)
+   %DD   - Two digit day 
+   %HH   - Two digit hour
+   %MI   - Two digit minute
+   %SS   - Two digit second
+   %MS   - Milliseconds (eg. 1, 2, 987)
+   %EV   - The event name
+   %TX   - The event text JSON String of the event's arguments
+
+Additionally, you can wrap text in style brackets:
+Valid styles are: red, white, blue, green, purple, cyan, yellow, bold, under, blink
+Example:
+   "[bold]%YYYY-%MM-%DD INFO[green] %EV [/green] [blue]%TX[/blue][/bold] "
+   This will be bold and print the date and the word INFO in the default console color, 
+   the event name in green and the event text in blue
+    
 ## advanced usage
 
     var Eventful = require('../'), 
         util = require('util'),
         http = require('http');
-
+    
     var logger = new Eventful({
       info:{
         format:"[%YYYY-%DD-%MM %HH:%MI:%SS]\tINFO\t%EV",
@@ -59,19 +95,19 @@
         to:function(text){ console.log(text); }
       }
     });
-
+    
     var server = http.createServer(function (req, res) {
       res.writeHead(200, {'Content-Type': 'text/plain'});
       res.end('Hello World\n');
       logger.attach(req, {debug:{only:['data']}, info:{exclude:['data']}});
     });
-
-    logger.attach(req, {error: {only:['error','clientError']}});
+    
+    logger.attach(server, {error: {only:['error','clientError']}});
     server.listen(8124, "127.0.0.1");
     
 ## logging as JSON
 
-    var Eventful = require('eventful'),
+    var Eventful = require('../'),
         logger = new Eventful(),
         http = require('http');
     
@@ -81,8 +117,8 @@
     });
     
     logger.attach(server, {
-      info:{format:"{\"time\":%XX, \"event\":\"%EV\", \"level\":\"INFO\" \"data\":\"%TX\"}"},
-      error:{format:"{\"time\":%XX, \"event\":\"%EV\", \"level\":\"ERROR\" \"data\":\"%TX\"}"},
+      info:{format:"{\"time\":%XX, \"event\":\"%EV\", \"level\":\"INFO\" \"data\":\"%TX\"}", exclude:['error']},
+      error:{format:"{\"time\":%XX, \"event\":\"%EV\", \"level\":\"ERROR\" \"data\":\"%TX\"}", only:['error']},
     });
     
     server.listen(8124, "127.0.0.1");

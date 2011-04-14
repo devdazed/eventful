@@ -25,5 +25,5 @@ var server = http.createServer(function (req, res) {
   logger.attach(req, {debug:{only:['data']}, info:{exclude:['data']}});
 });
 
-logger.attach(req, {error: {only:['error','clientError']}});
+logger.attach(server, {error: {only:['error','clientError']}});
 server.listen(8124, "127.0.0.1");
