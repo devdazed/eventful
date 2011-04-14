@@ -8,19 +8,19 @@
   Eventful takes an optional constructor argument to override the defaults and has 2 methods, attach and detach.  Both attach and detach take an EventEmitter as the first argument, attach takes a second argument of options that extend defaults.
   
   The Eventful options object looks as such:
-  {
-    level:{
-      format:"[%YYYY-%DD-%MM %HH:%MI:%SS]\tINFO\t%EV",
-      only:[]
-      exclude:[],
-      to:function(text){ console.log(text); }
+    {
+      level:{
+        format:"[%YYYY-%DD-%MM %HH:%MI:%SS]\tINFO\t%EV",
+        only:[]
+        exclude:[],
+        to:function(text){ console.log(text); }
+      }
     }
-  }
 
-  [level]: is the log level, this can be anything you want is is mainly for your records
-  [format]: is the format of the text to be logged see format
-  [only]: an array of event names that will only be logged
-  [exclude]: an array of event names to prevent form being logged
+    [level]: is the log level, this can be anything you want is is mainly for your records
+    [format]: is the format of the text to be logged see format
+    [only]: an array of event names that will only be logged
+    [exclude]: an array of event names to prevent form being logged
   
 ## usage
 
