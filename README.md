@@ -54,28 +54,28 @@ Obviously,the above example is only useful if you know what argument 0 will be a
     
 ## formatting
 
-Valid Formatting Options are:
-   %XX   - The unix epoch
-   %YYYY - Four digit year
-   %MM   - Two digit month (eg. 01, 02, 10, 11)
-   %DD   - Two digit day 
-   %HH   - Two digit hour
-   %MI   - Two digit minute
-   %SS   - Two digit second
-   %MS   - Milliseconds (eg. 1, 2, 987)
-   %EV   - The event name
-   %TX   - The event text JSON String of the event's arguments
-
-Additionally, you can wrap text in style brackets:
-Valid styles are: red, white, blue, green, purple, cyan, yellow, bold, under, blink
-Example:
-   "[bold]%YYYY-%MM-%DD INFO[green] %EV [/green] [blue]%TX[/blue][/bold] "
-   This will be bold and print the date and the word INFO in the default console color, 
-   the event name in green and the event text in blue
+    Valid Formatting Options are:
+       %XX   - The unix epoch
+       %YYYY - Four digit year
+       %MM   - Two digit month (eg. 01, 02, 10, 11)
+       %DD   - Two digit day 
+       %HH   - Two digit hour
+       %MI   - Two digit minute
+       %SS   - Two digit second
+       %MS   - Milliseconds (eg. 1, 2, 987)
+       %EV   - The event name
+       %TX   - The event text JSON String of the event's arguments
     
+    Additionally, you can wrap text in style brackets:
+    Valid styles are: red, white, blue, green, purple, cyan, yellow, bold, under, blink
+    Example:
+       "[bold]%YYYY-%MM-%DD INFO[green] %EV [/green] [blue]%TX[/blue][/bold] "
+       This will be bold and print the date and the word INFO in the default console color, 
+       the event name in green and the event text in blue
+        
 ## advanced usage
 
-    var Eventful = require('../'), 
+    var Eventful = require('eventful'), 
         util = require('util'),
         http = require('http');
     
@@ -107,7 +107,7 @@ Example:
     
 ## logging as JSON
 
-    var Eventful = require('../'),
+    var Eventful = require('eventful'),
         logger = new Eventful(),
         http = require('http');
     
