@@ -8,6 +8,7 @@
   Eventful takes an optional constructor argument to override the defaults and has 2 methods, attach and detach.  Both attach and detach take an EventEmitter as the first argument, attach takes a second argument of options that extend defaults.
   
   The Eventful options object looks as such:
+  
     {
       level:{
         format:"[%YYYY-%DD-%MM %HH:%MI:%SS]\tINFO\t%EV",
