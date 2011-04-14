@@ -1,5 +1,5 @@
 {
-    "name": "node-event-log"
+    "name": "eventful"
   , "version": "0.0.1"
   , "description": "EventEmitter based logging for node.js"
   , "keywords": []

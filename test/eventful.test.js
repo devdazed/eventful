@@ -3,15 +3,15 @@
  */
  /**
  var EventEmitter = require('events').EventEmitter
- var EventLogger = require('./')
+ var Eventful = require('./')
  var a = new EventEmitter()
  var b = new EventEmitter()
- var logger = new EventLogger()
+ var logger = new Eventful()
  logger.attach(a)
  */
-var EventLogger = require('node-event-log'),
+var Eventful = require('eventful'),
     EventEmitter = require('events').EventEmitter,
-    logger = new EventLogger(),
+    logger = new Eventful(),
     test = module.exports,
     should = require('should');
 
