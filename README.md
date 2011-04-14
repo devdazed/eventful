@@ -38,6 +38,10 @@ Eventful takes the event and inspects all of the arguments to log the data, if y
 The parameters for the callback are "the date of the event", "the name of the event", "an array of arguments associated with the event"
 Obviously,the above example is only useful if you know what argument 0 will be all the time, but you get the idea
 
+## installation
+
+    npm install eventful
+    
 ## usage
 
     var Eventful = require('eventful'),
