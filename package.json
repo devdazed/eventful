@@ -1,6 +1,6 @@
 {
     "name": "eventful"
-  , "version": "0.1.1"
+  , "version": "0.1.2"
   , "description": "EventEmitter based logging for node.js"
   , "keywords": []
   , "author": "Russell Bradberry <rbradberry@gmail.com>"
